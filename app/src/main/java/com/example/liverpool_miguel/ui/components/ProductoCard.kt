@@ -9,11 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.liverpool_miguel.model.ProductDetail
+import com.example.liverpool_miguel.model.Producto
 
 @Composable
 fun ProductoCard(
-    producto: ProductDetail,
+    producto: Producto,
     onClick: (String) -> Unit
 ) {
     Card(

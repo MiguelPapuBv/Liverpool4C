@@ -2,13 +2,14 @@ package com.example.liverpool_miguel.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.liverpool_miguel.model.ProductDetail
+import com.example.liverpool_miguel.model.Producto
 
 class ProductoViewModel : ViewModel() {
 
     private val comentarios = ComentarioViewModel()
 
-    val listaProductos: List<ProductDetail> = listOf(
-        ProductDetail(
+    val listaProductos: List<Producto> = listOf(
+        Producto(
             id = "1",
             brand = "Dior",
             name = "Sauvage Eau de Parfum",
@@ -20,7 +21,7 @@ class ProductoViewModel : ViewModel() {
             image = null,
             reviews = comentarios.comentariosDior
         ),
-        ProductDetail(
+        Producto(
             id = "2",
             brand = "Nintendo",
             name = "Consola Nintendo Switch OLED",
@@ -32,7 +33,7 @@ class ProductoViewModel : ViewModel() {
             image = null,
             reviews = comentarios.comentariosNintendo
         ),
-        ProductDetail(
+        Producto(
             id = "3",
             brand = "Nike",
             name = "Tenis Air Max 270",
@@ -44,7 +45,7 @@ class ProductoViewModel : ViewModel() {
             image = null,
             reviews = comentarios.comentariosNike
         ),
-        ProductDetail(
+        Producto(
             id = "4",
             brand = "Apple",
             name = "iPhone 15 Pro 256GB",
@@ -56,7 +57,7 @@ class ProductoViewModel : ViewModel() {
             image = null,
             reviews = comentarios.comentariosIphone
         ),
-        ProductDetail(
+        Producto(
             id = "5",
             brand = "Samsung",
             name = "Pantalla 55 Pulgadas 4K UHD",
@@ -68,7 +69,7 @@ class ProductoViewModel : ViewModel() {
             image = null,
             reviews = comentarios.comentariosTv
         ),
-        ProductDetail(
+        Producto(
             id = "6",
             brand = "Dell",
             name = "Laptop XPS 13 Plus",
@@ -82,7 +83,7 @@ class ProductoViewModel : ViewModel() {
         )
     )
 
-    fun obtenerProductoPorId(id: String): ProductDetail? {
+    fun obtenerProductoPorId(id: String): Producto? {
         return listaProductos.find { it.id == id }
     }
 }

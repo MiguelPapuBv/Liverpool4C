@@ -6,11 +6,11 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
-import com.example.liverpool_miguel.model.ProductDetail
+import com.example.liverpool_miguel.model.Producto
 
 @Composable
 fun ProductoList(
-    productos: List<ProductDetail>,
+    productos: List<Producto>,
     onProductClick: (String) -> Unit
 ) {
     LazyVerticalGrid(

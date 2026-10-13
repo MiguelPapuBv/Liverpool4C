@@ -11,9 +11,9 @@ fun ComentarioList(
     Column {
         comentarios.forEach { review ->
             ComentarioCard(
-                usuario = review.reviewerName,
-                comentario = review.comment,
-                calificacion = review.rating
+                usuario = review.nombreUsuario,
+                comentario = review.comentario,
+                calificacion = review.estrellas.toDouble()
             )
         }
     }

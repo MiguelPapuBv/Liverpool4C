@@ -1,62 +1,55 @@
-package com.example.liverpool_miguel.navigation
+package com.example.liverpool_miguel.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.liverpool_miguel.ui.screens.DetallesProductoScreen
-import com.example.liverpool_miguel.ui.screens.InicioScreen
-import com.example.liverpool_miguel.ui.screens.ListaProductosScreen
+import com.example.liverpool_miguel.ui.screens.DetalleProductos
+import com.example.liverpool_miguel.ui.screens.ListaProductos
+import com.example.liverpool_miguel.viewmodel.ComentarioViewModel
 import com.example.liverpool_miguel.viewmodel.ProductoViewModel
+import mx.edu.utez.MiguelChavez.ui.screens.liverpool.InicioScreen
 
+// Definición de las rutas idéntica a la plantilla de tu profesor
 sealed class Route(val path: String) {
     object Inicio : Route("inicio")
     object Productos : Route("productos")
-    object Detalles : Route("detalles/{productoId}") {
-        fun createRoute(productoId: String) = "detalles/$productoId"
-    }
+    object Detalles : Route("detalles")
 }
 
 @Composable
 fun AppNavGraph(
     navController: NavHostController,
-    modifier: Modifier = Modifier,
-    productoViewModel: ProductoViewModel = viewModel()
+    modifier: Modifier = Modifier
 ) {
     NavHost(
         navController = navController,
         startDestination = Route.Inicio.path,
         modifier = modifier
     ) {
-        
+        // 1. Pantalla de Inicio
         composable(Route.Inicio.path) {
             InicioScreen(
                 onNavigateToList = { navController.navigate(Route.Productos.path) }
             )
         }
 
+        // 2. Pantalla Lista de Productos
         composable(Route.Productos.path) {
-            ListaProductosScreen(
-                productos = productoViewModel.listaProductos,
-                onBack = { navController.popBackStack() },
-                onProductClick = { id -> 
-                    navController.navigate(Route.Detalles.createRoute(id)) 
-                }
+            ListaProductos(
+                ProductoViewModel(),
+                navController
             )
         }
 
-        composable(Route.Detalles.path) { backStackEntry ->
-            val productoId = backStackEntry.arguments?.getString("productoId")
-            val producto = productoId?.let { productoViewModel.obtenerProductoPorId(it) }
-            
-            if (producto != null) {
-                DetallesProductoScreen(
-                    producto = producto,
-                    onBack = { navController.popBackStack() }
-                )
-            }
+        // 3. Pantalla Detalles de Producto
+        composable(Route.Detalles.path) {
+            DetalleProductos(
+                ProductoViewModel(),
+                ComentarioViewModel(),
+                navController
+            )
         }
     }
 }

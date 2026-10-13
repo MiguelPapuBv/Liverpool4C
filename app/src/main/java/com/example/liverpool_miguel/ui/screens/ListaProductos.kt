@@ -11,11 +11,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.liverpool_miguel.model.ProductDetail
+import com.example.liverpool_miguel.model.Producto
 import com.example.liverpool_miguel.ui.components.ProductoList
 
 @Composable
 fun ListaProductos(
-    productos: List<ProductDetail>,
+    productos: List<Producto>,
     onBack: () -> Unit,
     onProductClick: (String) -> Unit
 ) {
