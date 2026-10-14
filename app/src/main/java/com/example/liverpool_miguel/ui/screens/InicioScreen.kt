@@ -1,7 +1,7 @@
 package mx.edu.utez.MiguelChavez.ui.screens.liverpool
 
 import androidx.compose.foundation.layout.*
-package com.example.liverpool_miguel.ui.screens
+
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -12,7 +12,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun InicioScreen(onNavigateToList: () -> Unit) {
+fun InicioScreen(
+    onNavigateToList: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
